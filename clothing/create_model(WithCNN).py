@@ -117,7 +117,10 @@ plt.plot(history_pic.history['val_loss'], label='test loss')
 plt.legend(loc='upper right')
 plt.show()
 
+##lage det til en numpy fil:
    
+y_val_pred = model_clothes.predict(X_val)
+y_val_pred_argmax = np.argmax(y_val_pred, axis=1)
 
 
 

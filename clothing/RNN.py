@@ -70,8 +70,7 @@ tf.keras.layers.BatchNormalization
 ​
 #1 test: 85%
 input_layer = Input(shape=(28,28))
-lstm_layer_1 = LSTM(50, return_sequences=True)(input_layer)
-lstm_layer_2 = LSTM(20, return_sequences=True)(lstm_layer_1)
+lstm_layer_1 = LSTM(100, return_sequences=True)(input_layer)
 flatten_layer = tf.keras.layers.Flatten()(lstm_layer_2)
 first_hidden_layer = Dense (15, activation='relu')(flatten_layer)
 output_layer = Dense(10, activation='softmax')(first_hidden_layer)
@@ -128,7 +127,7 @@ plt.show()
 
 
 
-y_val_pred = model_clothes.predict(X_val)
+y_val_pred = model_pic.predict(X_val)
 y_val_pred_argmax = np.argmax(y_val_pred, axis=1)
 
 
@@ -137,5 +136,5 @@ y_val_pred_argmax = np.argmax(y_val_pred, axis=1)
 my_prediction = np.array([0,1,2])
 
 # save predictions
-my_name = 'Kristoffer'
-np.save(f'{my_name}_predictions.npy', my_prediction)
+my_name = 'Kaja'
+np.save(f'{my_name}_predictions_RNN.npy', my_prediction)

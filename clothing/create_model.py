@@ -112,7 +112,9 @@ plt.show()
 
 
 
-
+#Lage np array fil som kan legges inn i filen som skal leveres: 
+y_val_pred = model_clothes.predict(X_val)
+y_val_pred_argmax = np.argmax(y_val_pred, axis=1)
 
 
 

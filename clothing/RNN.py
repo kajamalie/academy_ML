@@ -71,6 +71,7 @@ tf.keras.layers.BatchNormalization
 #1 test: 85%
 input_layer = Input(shape=(28,28))
 lstm_layer_1 = LSTM(100, return_sequences=True)(input_layer)
+lstm_layer_2 = LSTM(80, return_sequences=True)(lstm_layer_1)
 flatten_layer = tf.keras.layers.Flatten()(lstm_layer_2)
 first_hidden_layer = Dense (15, activation='relu')(flatten_layer)
 output_layer = Dense(10, activation='softmax')(first_hidden_layer)
@@ -83,8 +84,8 @@ history_pic = model_pic.fit(X_train, y_train, batch_size=150, epochs=10, validat
 
 #2 test: train: 0.8945, train 0.8917
 input_layer = Input(shape=(28,28))
-lstm_layer_1 = LSTM(50, return_sequences=True)(input_layer)
-lstm_layer_2 = LSTM(20, return_sequences=True)(lstm_layer_1)
+lstm_layer_1 = LSTM(100, return_sequences=True)(input_layer)
+lstm_layer_2 = LSTM(80, return_sequences=True)(lstm_layer_1)
 flatten_layer = tf.keras.layers.Flatten()(lstm_layer_2)
 first_hidden_layer = Dense (100, activation='relu')(flatten_layer)
 output_layer = Dense(10, activation='softmax')(first_hidden_layer)
@@ -92,7 +93,11 @@ output_layer = Dense(10, activation='softmax')(first_hidden_layer)
 model_pic = Model(inputs = input_layer, outputs=output_layer)
 model_pic.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['acc'])
 
-history_pic = model_pic.fit(X_train, y_train, batch_size=150, epochs=10, validation_data = (X_test, y_test))
+history_pic = model_pic.fit(X_train, y_train, batch_size=100, epochs=9, validation_data = (X_test, y_test))
+
+
+
+
 
 
 #3 test
@@ -133,8 +138,8 @@ y_val_pred_argmax = np.argmax(y_val_pred, axis=1)
 
 
 # predic validation data
-my_prediction = np.array([0,1,2])
+my_prediction = y_val_pred_argmax 
 
 # save predictions
 my_name = 'Kaja'
-np.save(f'{my_name}_predictions_RNN.npy', my_prediction)
+np.save(f'{my_name}_predictions_RNN2.npy', my_prediction)

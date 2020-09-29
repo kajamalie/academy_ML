@@ -157,3 +157,8 @@ plt.show()
 
 
 
+#%%
+import plotly.express as px
+
+fig_simple = px.scatter(x=[1,2,3,4], y=[4,3,2,1])
+fig_simple.show()
